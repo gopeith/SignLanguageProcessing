@@ -1,6 +1,7 @@
 import sys
 
 import tensorflow
+import tensorflow as tf
 
 import keras.backend as K
 from keras.legacy import interfaces
@@ -52,7 +53,7 @@ class AdamAccumulate(Optimizer):
         super(AdamAccumulate, self).__init__(**kwargs)
         with K.name_scope(self.__class__.__name__):
             self.iterations = K.variable(0, dtype='int64', name='iterations')
-            self.lr = K.variable(lr, name='lr')
+            self.lr_ = K.variable(value=lr, name='lr')
             self.beta_1 = K.variable(beta_1, name='beta_1')
             self.beta_2 = K.variable(beta_2, name='beta_2')
             self.decay = K.variable(decay, name='decay')
@@ -69,9 +70,9 @@ class AdamAccumulate(Optimizer):
         grads = self.get_gradients(loss, params)
         self.updates = [K.update_add(self.iterations, 1)]
 
-        lr = self.lr
+        lr = self.lr_
 
-        completed_updates = K.cast(K.tf.floordiv(self.iterations, self.accum_iters), K.floatx())
+        completed_updates = K.cast(tf.floordiv(self.iterations, self.accum_iters), K.floatx())
 
         if self.initial_decay > 0:
             lr = lr * (1. / (1. + self.decay * completed_updates))
@@ -128,7 +129,7 @@ class AdamAccumulate(Optimizer):
         return self.updates
 
     def get_config(self):
-        config = {'lr': float(K.get_value(self.lr)),
+        config = {'lr': float(K.get_value(self.lr_)),
                   'beta_1': float(K.get_value(self.beta_1)),
                   'beta_2': float(K.get_value(self.beta_2)),
                   'decay': float(K.get_value(self.decay)),
