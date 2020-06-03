@@ -42,7 +42,7 @@ random.shuffle(list_training)
 
 # for debuging
 #list_stop = list_stop[0:64]
-list_stop = list_stop[0:1]
+#list_stop = list_stop[0:1]
 
 n_files_in_batch = 512
 if n_files_in_batch > len(list_training):
