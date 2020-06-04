@@ -281,7 +281,7 @@ def compute_mask(La, Lb, dtype):
   return M
 
 
-def lossAttMSE(y_true, y_pred):
+def lossAttMSE(y_true, y_pred, thr=0.1):
   a = y_pred
   b = y_true
   
@@ -307,7 +307,7 @@ def lossAttMSE(y_true, y_pred):
     a = K.cast(a, dtype)
     b = K.cast(b, dtype)
     
-  M0 = makeM0(La, Lb, 0.1, dtype)
+  M0 = makeM0(La, Lb, thr, dtype)
   D2 = compute_D2(a, b, La, Lb)
   mD2M = -(1.0 * D2 + M0)
   M1 = K.softmax(mD2M)
