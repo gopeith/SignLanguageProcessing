@@ -1,3 +1,10 @@
+Our pipeline progress as follows:
+	1) Packing relevant (see variable idxsPose and idxsHand) keypoints stored as json files into a single h5 file.
+	2) Using a filter to interpolate missing keypoints. This filter uses the described backpropagation-based 2D->3D skeleton transformation.
+	3) Transforming absolute positions into vectors.
+	4) Normalizing standard deviance.
+	5)  Computing an average pose.
+	6) Training a model.
 
 Cite as:
 
