@@ -1,12 +1,17 @@
 Neural Sign Language Synthesis: Words Are Our Glosses
 
+
+Scripts required the TensorFlow toolbox. The verified TensorFlow version is 1.15.0.
+
+This archive includes a small toy database (demo). JSON files are packed into a zip file.
+
 Our pipeline progress as follows:
-	1) Packing relevant (see variable idxsPose and idxsHand) keypoints stored as json files into a single h5 file.
-	2) Using a filter to interpolate missing keypoints. This filter uses the described backpropagation-based 2D->3D skeleton transformation.
-	3) Transforming absolute positions into vectors.
-	4) Normalizing standard deviance.
-	5) Computing an average pose.
-	6) Training a model.
+	1) Packing relevant (see variable idxsPose and idxsHand) keypoints stored as JSON files into a single H5 file. (see pipeline_demo_01_json2h5.py)
+	2) Using a filter to interpolate missing keypoints. This filter uses the described backpropagation-based 2D->3D skeleton transformation. (see pipeline_demo_02_filter.py)
+	3) Transforming absolute positions into vectors. (see pipeline_demo_03_deltas.py)
+	4) Normalizing standard deviance. (see pipeline_demo_04_norm.py)
+	5) Computing an average pose. (see pipeline_demo_05_mu.py)
+	6) Training a model. (pipeline_demo_06-train-model_FF_05.py)
 
 Cite as:
 
