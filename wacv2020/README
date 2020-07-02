@@ -1,4 +1,4 @@
-<h1>Neural Sign Language Synthesis: Words Are Our Glosses</h1>
+Neural Sign Language Synthesis: Words Are Our Glosses
 
 Scripts required the TensorFlow toolbox. The verified TensorFlow version is 1.15.0.
 
