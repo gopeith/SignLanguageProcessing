@@ -12,6 +12,8 @@ Our pipeline progress as follows:
 	5) Computing an average pose. (see pipeline_demo_05_mu.py)
 	6) Training a model. (pipeline_demo_06-train-model_FF_05.py)
 
+The described gradient-based pose reconstruction is used in the second step. The algorithm is implemented in the file pose3D.py. The described initialization is the function initialization in the file pose2Dto3D.py. Algorithms use skeletal structure defined in the script skeletalModel.py. 
+
 Cite as:
 
 @InProceedings{Zelinka_2020_WACV,
